@@ -6,18 +6,42 @@
     <title>Feliz Navidad</title>
 
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Great+Vibes&display=swap');
         body {
-            background: rgb(50,49,51);
-            background: -moz-radial-gradient(circle, rgba(50,49,51,1) 0%, rgba(19,18,19,1) 87%);
-            background: -webkit-radial-gradient(circle, rgba(50,49,51,1) 0%, rgba(19,18,19,1) 87%);
-            background: radial-gradient(circle, rgba(50,49,51,1) 0%, rgba(19,18,19,1) 87%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#323133",endColorstr="#131213",GradientType=1);
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100vh;
-            overflow-x: hidden;
-            touch-action: manipulation;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          min-height: 100vh;
+          background:
+            radial-gradient(circle at 20% 20%, rgba(255, 99, 132, 0.12), transparent 45%),
+            radial-gradient(circle at 80% 30%, rgba(255, 214, 165, 0.15), transparent 50%),
+            linear-gradient(135deg, #0d0b0f 0%, #1a1018 40%, #2b0f1f 70%, #120a12 100%);
+          color: #ffffff;
+          overflow-x: hidden;
+          position: relative;
+          touch-action: manipulation;
+        }
+
+        /* Viñeta suave y bruma rosada */
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          background:
+            radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.45) 75%, rgba(0, 0, 0, 0.65) 100%),
+            radial-gradient(circle at 30% 20%, rgba(255, 182, 193, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 70% 80%, rgba(255, 228, 225, 0.07) 0%, transparent 35%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        body::after {
+          content: "";
+          position: fixed;
+          inset: 0;
+          background: radial-gradient(circle at 60% 40%, rgba(255, 105, 180, 0.08), transparent 50%);
+          pointer-events: none;
+          z-index: 0;
         }
         body ul {
           padding: 0;
@@ -737,17 +761,50 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
 
 /* .text-mc 'Feliz Navida' que el texto sea como fondo y desenfocado*/
 .text-mc {
-    font-family: serif;
-    font-size: 5vh;
-    color: #ffffff;
-    text-align: center;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    margin: -5vh 0 0 -50vw;
-    width: 100vw;
-    filter: blur(1px);
-    z-index: -1;
+  font-family: 'Great Vibes', cursive;
+  font-size: 5vh;
+  color: #ffd8e8;
+  text-align: center;
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  margin: -5vh 0 0 -50vw;
+  width: 100vw;
+  filter: blur(0.5px);
+  z-index: -1;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(255, 182, 193, 0.35);
+}
+
+.mensaje-lateral {
+  position: absolute;
+  top: 36%;
+  right: 6%;
+  max-width: 260px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ffe6f1;
+  letter-spacing: 0.4px;
+  text-align: right;
+  text-shadow: 0 0 10px rgba(255, 192, 203, 0.35);
+  z-index: 4;
+}
+
+.mensaje-dedicado {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #ffe6f1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  opacity: 0;
+  animation: aparecerSuave 2.5s ease-in-out 0.5s forwards;
+  text-shadow: 0 0 10px rgba(255, 192, 203, 0.35);
+  pointer-events: none;
 }
 
 /* .gift-box caja de regalo*/
@@ -802,9 +859,9 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
   left: 172px;
 }
 .promo {
-  font-size: 30px;
-  color: white;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 28px;
+  color: #ffe6f1;
+  font-family: 'Playfair Display', serif;
   text-align: center;
   position: relative;
   height: 0;
@@ -812,12 +869,16 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
   transition: all ease-out 0.7s;
 }
 .promo p {
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
+  font-family: 'Great Vibes', cursive;
+  color: #ffd1dc;
 }
 .promo h2 {
-  font-size: 24px;
+  font-size: 22px;
   margin: 0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 12px rgba(255, 182, 193, 0.35);
 }
 
 /* Efecto hover */
@@ -839,7 +900,7 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
   top: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(50,49,51,0.3) 0%, rgba(19,18,19,0.3) 87%);
+  background: radial-gradient(circle, rgba(30, 20, 30, 0.6) 0%, rgba(10, 6, 12, 0.8) 80%);
   animation: fadeIn 0.5s ease-in-out;
   backdrop-filter: blur(2px);
 }
@@ -855,10 +916,11 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
   max-width: 90%;
   max-height: 90vh;
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.45), 0 0 50px rgba(255, 215, 180, 0.35);
   animation: zoomIn 0.6s ease-out;
   overflow: hidden;
   z-index: 1001;
+  border: 1px solid rgba(255, 192, 203, 0.35);
 }
 
 .modal-content img {
@@ -965,19 +1027,22 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
   font-size: 14px;
   white-space: nowrap;
   box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
-  animation: parpadear 1.5s ease-in-out infinite;
+  animation: latido 1.8s ease-in-out infinite;
   pointer-events: none;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes parpadear {
+@keyframes latido {
   0%, 100% {
     opacity: 1;
     transform: translateX(-50%) scale(1);
   }
-  50% {
-    opacity: 0.7;
-    transform: translateX(-50%) scale(1.05);
+  30% {
+    transform: translateX(-50%) scale(1.08);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.03);
   }
 }
 
@@ -1011,6 +1076,87 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
     transform: rotate(30deg);
   }
 }
+
+/* Lluvia sutil de corazones con destello */
+@keyframes caerSuave {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) translateX(40px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes brilloSuave {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 192, 203, 0.65)); }
+  50% { filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.9)); }
+}
+
+.corazon-fondo {
+  position: fixed;
+  top: -40px;
+  font-size: 18px;
+  color: #ffadc6;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 2;
+  animation: caerSuave var(--duracion, 11s) linear forwards, brilloSuave 2.4s ease-in-out infinite;
+}
+
+/* Luces parpadeantes alrededor del árbol */
+.luces {
+  position: absolute;
+  top: 18vh;
+  left: 50%;
+  width: 220px;
+  height: 320px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.luces span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffd27f 0%, #ffb347 55%, rgba(255, 179, 71, 0) 70%);
+  box-shadow: 0 0 12px rgba(255, 200, 120, 0.8);
+  animation: titilar 2s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.luces span:nth-child(1) { top: 8%; left: 48%; animation-delay: 0s; }
+.luces span:nth-child(2) { top: 15%; left: 60%; animation-delay: 0.3s; }
+.luces span:nth-child(3) { top: 22%; left: 38%; animation-delay: 0.6s; }
+.luces span:nth-child(4) { top: 30%; left: 55%; animation-delay: 0.9s; }
+.luces span:nth-child(5) { top: 38%; left: 45%; animation-delay: 1.2s; }
+.luces span:nth-child(6) { top: 46%; left: 58%; animation-delay: 1.5s; }
+.luces span:nth-child(7) { top: 54%; left: 40%; animation-delay: 1.8s; }
+.luces span:nth-child(8) { top: 62%; left: 52%; animation-delay: 2.1s; }
+.luces span:nth-child(9) { top: 70%; left: 44%; animation-delay: 2.4s; }
+.luces span:nth-child(10){ top: 78%; left: 56%; animation-delay: 2.7s; }
+.luces span:nth-child(11){ top: 26%; left: 70%; animation-delay: 0.45s; }
+.luces span:nth-child(12){ top: 50%; left: 30%; animation-delay: 1.35s; }
+.luces span:nth-child(13){ top: 66%; left: 66%; animation-delay: 2.0s; }
+.luces span:nth-child(14){ top: 84%; left: 48%; animation-delay: 2.5s; }
+.luces span:nth-child(15){ top: 42%; left: 32%; animation-delay: 1.6s; }
+.luces span:nth-child(16){ top: 12%; left: 36%; animation-delay: 0.75s; }
+
+@keyframes titilar {
+  0%   { opacity: 0.35; box-shadow: 0 0 8px rgba(255, 200, 120, 0.4); }
+  50%  { opacity: 1; box-shadow: 0 0 18px rgba(255, 220, 150, 0.9); }
+  100% { opacity: 0.45; box-shadow: 0 0 10px rgba(255, 200, 120, 0.6); }
+}
+
+/* Mensaje dedicado animado */
+@keyframes aparecerSuave {
+  0% { opacity: 0; transform: translate(-50%, 20px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
     
     /* Media Queries para dispositivos móviles */
     @media (max-width: 768px) {
@@ -1027,6 +1173,13 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
       .text-mc {
         font-size: 3vh;
         top: 25%;
+      }
+
+      .mensaje-lateral {
+        top: 32%;
+        right: 4%;
+        font-size: 16px;
+        max-width: 220px;
       }
       
       /* Ajustes para el regalo */
@@ -1117,6 +1270,16 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
         font-size: 2.5vh;
         top: 20%;
       }
+
+      .mensaje-lateral {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 20px auto 0;
+        text-align: center;
+        max-width: 90%;
+        font-size: 15px;
+      }
       
       .regalo {
         bottom: 15px;
@@ -1183,7 +1346,6 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
 </head>
 
 <body>
-    
 <ul>
     <li></li>
     <li></li>
@@ -1322,6 +1484,13 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
     <li></li>
   </ul>
 
+  <div class="luces" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
   <div>
     <h1 class="text-mc">
         A<br>
@@ -1333,6 +1502,8 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
         AMORCIT <BR>
         AMORCITO<BR>
     </h1>
+    <div class="mensaje-lateral">Lo mejor de esta Navidad es compartirla contigo, Yeyis. </div>
+    
   </div>
 
   <div class="regalo" onclick="abrirModal()">
@@ -1340,7 +1511,7 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
       <span></span>
     </div>
     <div class="promo">
-      <p>Feliz Navidad</p>
+      <p>Un besote</p>
       <h2>La quiero Yeyis</h2>
     </div>
     <div class="caja">
@@ -1427,5 +1598,29 @@ body ul:nth-child(2) li:nth-child(4n+3):before {
       if (event.key === 'Escape') {
         cerrarModal();
       }
+    });
+
+    // Lluvia de corazones sutil de fondo
+    function crearCorazonFondo() {
+      const corazon = document.createElement('div');
+      corazon.className = 'corazon-fondo';
+      corazon.textContent = Math.random() < 0.4 ? '❤' : '❄';
+
+      const duracion = 9 + Math.random() * 5; // 9 a 14 segundos
+      const tam = 14 + Math.random() * 10;
+      const izquierda = Math.random() * window.innerWidth;
+
+      corazon.style.left = izquierda + 'px';
+      corazon.style.fontSize = tam + 'px';
+      corazon.style.setProperty('--duracion', duracion + 's');
+
+      document.body.appendChild(corazon);
+
+      setTimeout(() => corazon.remove(), (duracion + 1) * 1000);
+      setTimeout(crearCorazonFondo, 220);
+    }
+
+    window.addEventListener('load', () => {
+      crearCorazonFondo();
     });
   </script>
