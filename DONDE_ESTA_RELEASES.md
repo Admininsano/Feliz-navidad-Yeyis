@@ -31,7 +31,8 @@ Si quieres crear una nueva versión del proyecto:
 3. **Haz clic en "Create a new release"** (botón verde)
 4. **Crea un tag** (nombre de versión):
    - Ejemplo: `v1.0.0`, `v1.1.0`, etc.
-   - Usa versionado semántico: `vMAYOR.MENOR.PARCHE`
+   - Usa versionado semántico: `vMAYOR.MENOR.PARCHE` (en inglés: MAJOR.MINOR.PATCH)
+   - MAYOR = cambios importantes, MENOR = nuevas características, PARCHE = correcciones
 5. **Escribe un título descriptivo**:
    - Ejemplo: "Versión 1.0.0 - Navidad Especial 🎄"
 6. **Añade una descripción** (puedes copiarla de `RELEASE_NOTES.md`)
